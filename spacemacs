@@ -10,7 +10,17 @@
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
-   dotspacemacs-configuration-layers '(themes-megapack git php scala ruby python dtrt-indent)
+   dotspacemacs-configuration-layers '(themes-megapack
+                                       git
+                                       clojure
+                                       php
+                                       csharp
+                                       javascript
+                                       scala
+                                       ruby
+                                       python
+                                       web-mode
+                                       dtrt-indent)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -114,6 +124,9 @@ before layers configuration."
   ;; use customized linum-format: add a addition space after the line number
   (setq linum-format (lambda (line) (propertize (format (let ((w (length (number-to-string (count-lines (point-min) (point-max)))))) (concat "%" (number-to-string w) "d ")) line) 'face 'linum)))
 
+  ;; indent with 2 spaces
+  (setq js-indent-level 2)
+
   ;; Always use Flycheck
   (add-hook 'after-init-hook #'global-flycheck-mode)
 
@@ -132,6 +145,10 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  ;; C#
+  (setq-default omnisharp-debug t)
+  (setq-default omnisharp-server-executable-path "/Users/elo/Apps/OmniSharpServer/OmniSharp/bin/Debug/OmniSharp.exe")
+  (setq-default omnisharp--curl-executable-path "/usr/local/opt/curl/bin/curl")
 )
 
 
