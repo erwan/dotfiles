@@ -1,0 +1,76 @@
+[user]
+	email = erwan.loisant@datadoghq.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPBDFi6dwMEaecwROoVuO+Hr2j3yue5VLvEBhfmAQUf+ erwan.loisant+git-commit-signing@datadoghq.com
+	name = Erwan Loisant
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+	insteadOf = git://github.com/
+
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[core]
+	hooksPath = /usr/local/dd/global_hooks
+	excludesfile = /Users/erwan.loisant/.gitignore
+	untrackedCache = true
+	fsmonitor = true
+
+[include]
+  # For username / creds / and machine specific setup
+  path = ~/.gitconfig.local
+
+[color]
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[push]
+  default = current
+  autoSetupRemote = true
+
+[alias]
+  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+  co = checkout
+  undo = reset HEAD~1 --mixed
+  amend = commit -a --amend
+  wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  prb = pull --rebase
+  pushf = push --force-with-lease
+  wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+  oopsie = !git commit -a --amend --no-edit && git push --force-with-lease
+
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
+	process = git-lfs filter-process
+[rebase]
+	autostash = true
+
+[rerere]
+	enabled = true
+[safe]
+	directory = /private/var/tmp/_bazel_erwan.loisant/ad5682dac1bb1710d4bbe06ecbe59c85/execroot/dd_source/.git
+	directory = /private/var/tmp/_bazel_erwan.loisant/ad5682dac1bb1710d4bbe06ecbe59c85/execroot/dd_source/.git
+	directory = /private/var/tmp/_bazel_erwan.loisant/ad5682dac1bb1710d4bbe06ecbe59c85/execroot/dd_source/.git
+	directory = /private/var/tmp/_bazel_erwan.loisant/ad5682dac1bb1710d4bbe06ecbe59c85/execroot/dd_source/.git
+	directory = /private/var/tmp/_bazel_erwan.loisant/ad5682dac1bb1710d4bbe06ecbe59c85/execroot/dd_source/.git
